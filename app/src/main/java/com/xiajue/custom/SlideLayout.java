@@ -176,7 +176,7 @@ public class SlideLayout extends ViewGroup {
             @Override
             public boolean onDown(MotionEvent e) {
                 //保存最初的位置
-                mLastPoint.setPoing(e);
+                mLastPoint.setPoint(e);
                 return super.onDown(e);
             }
 
@@ -186,7 +186,7 @@ public class SlideLayout extends ViewGroup {
                 isFull = false;
                 Log.e("xj", "scroll " + getScrollX());
                 //实时更新位置
-                mNewPoint.setPoing(e2);
+                mNewPoint.setPoint(e2);
                 if (Math.abs(mLastPoint.x - mNewPoint.x) > Math.abs(mLastPoint.y - mNewPoint.y) &&
                         Math.abs(mLastPoint.x - mNewPoint.x) > mTouchSlop) {
                     //判断是否横向滑动，一定要用最初的位置和当前的位置来判断。
@@ -210,8 +210,8 @@ public class SlideLayout extends ViewGroup {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float
                     velocityY) {
                 Log.e("xj", "fling");
-                mLastPoint.setPoing(e1);
-                mNewPoint.setPoing(e2);
+                mLastPoint.setPoint(e1);
+                mNewPoint.setPoint(e2);
                 if (Math.abs(mLastPoint.x - mNewPoint.x) > Math.abs(mLastPoint.y - mNewPoint.y) &&
                         Math.abs(mLastPoint.x - mNewPoint.x) > mTouchSlop) {
                     //横屏操作
@@ -264,7 +264,7 @@ public class SlideLayout extends ViewGroup {
         public int x;
         public int y;
 
-        public void setPoing(MotionEvent event) {
+        public void setPoint(MotionEvent event) {
             x = (int) event.getX();
             y = (int) event.getY();
         }
